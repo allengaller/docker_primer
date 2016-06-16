@@ -1,0 +1,25 @@
+{
+  "name": "quickstart-node",
+  "version": "1.0.0",
+  "description": "Getting started in Tutum with Nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tutumcloud/quickstart-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tutumcloud/quickstart-node/issues"
+  },
+  "homepage": "https://github.com/tutumcloud/quickstart-node",
+  "dependencies": {
+    "express": "^4.11.2",
+    "redis": "^0.12.1",
+    "should": ">= 0.0.1",
+    "mocha": "*"
+  }
+}
