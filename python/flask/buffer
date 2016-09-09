@@ -1,0 +1,81 @@
+docker build -t flask .
+Sending build context to Docker daemon 16.38 kB
+Step 1 : FROM alpine:latest
+latest: Pulling from library/alpine
+e110a4a17941: Pull complete
+Digest: sha256:3dcdb92d7432d56604d4545cbd324b14e647b313626d99b889d0626de158f73a
+Status: Downloaded newer image for alpine:latest
+ ---> 4e38e38c8ce0
+Step 2 : MAINTAINER NI JIALIANG
+ ---> Running in e855d5929e44
+ ---> 6c659432be84
+Removing intermediate container e855d5929e44
+Step 3 : RUN apk --update add nginx python py-pip uwsgi uwsgi-python &&     pip install --upgrade pip &&     pip install flask supervisor requests
+ ---> Running in df48dfe30fd5
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.4/main/x86_64/APKINDEX.tar.gz
+
+
+
+
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.4/community/x86_64/APKINDEX.tar.gz
+(1/18) Installing nginx-common (1.10.1-r1)
+Executing nginx-common-1.10.1-r1.pre-install
+(2/18) Installing pcre (8.38-r1)
+(3/18) Installing nginx (1.10.1-r1)
+(4/18) Installing libbz2 (1.0.6-r4)
+(5/18) Installing expat (2.1.1-r1)
+(6/18) Installing libffi (3.2.1-r2)
+(7/18) Installing gdbm (1.11-r1)
+(8/18) Installing ncurses-terminfo-base (6.0-r7)
+(9/18) Installing ncurses-terminfo (6.0-r7)
+(10/18) Installing ncurses-libs (6.0-r7)
+(11/18) Installing readline (6.3.008-r4)
+(12/18) Installing sqlite-libs (3.13.0-r0)
+(13/18) Installing python (2.7.12-r0)
+(14/18) Installing py-setuptools (20.8.0-r0)
+(15/18) Installing py-pip (8.1.2-r0)
+(16/18) Installing mailcap (2.1.44-r0)
+(17/18) Installing uwsgi (2.0.13-r0)
+(18/18) Installing uwsgi-python (2.0.13-r0)
+Executing busybox-1.24.2-r9.trigger
+OK: 63 MiB in 29 packages
+Requirement already up-to-date: pip in /usr/lib/python2.7/site-packages
+Collecting flask
+  Downloading Flask-0.11.1-py2.py3-none-any.whl (80kB)
+Collecting supervisor
+  Downloading supervisor-3.3.1.tar.gz (415kB)
+Collecting requests
+  Downloading requests-2.11.1-py2.py3-none-any.whl (514kB)
+Collecting click>=2.0 (from flask)
+  Downloading click-6.6.tar.gz (283kB)
+Collecting Jinja2>=2.4 (from flask)
+  Downloading Jinja2-2.8-py2.py3-none-any.whl (263kB)
+Collecting Werkzeug>=0.7 (from flask)
+  Downloading Werkzeug-0.11.10-py2.py3-none-any.whl (306kB)
+Collecting itsdangerous>=0.21 (from flask)
+  Downloading itsdangerous-0.24.tar.gz (46kB)
+Collecting meld3>=0.6.5 (from supervisor)
+  Downloading meld3-1.0.2-py2.py3-none-any.whl
+Collecting MarkupSafe (from Jinja2>=2.4->flask)
+  Downloading MarkupSafe-0.23.tar.gz
+Installing collected packages: click, MarkupSafe, Jinja2, Werkzeug, itsdangerous, flask, meld3, supervisor, requests
+  Running setup.py install for click: started
+    Running setup.py install for click: finished with status 'done'
+  Running setup.py install for MarkupSafe: started
+    Running setup.py install for MarkupSafe: finished with status 'done'
+  Running setup.py install for itsdangerous: started
+    Running setup.py install for itsdangerous: finished with status 'done'
+  Running setup.py install for supervisor: started
+    Running setup.py install for supervisor: finished with status 'done'
+Successfully installed Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.10 click-6.6 flask-0.11.1 itsdangerous-0.24 meld3-1.0.2 requests-2.11.1 supervisor-3.3.1
+ ---> 8242444f3d46
+Removing intermediate container df48dfe30fd5
+Step 4 : ENTRYPOINT supervisord
+ ---> Running in d548bc8aec95
+ ---> 6fa1637c8e07
+Removing intermediate container d548bc8aec95
+Step 5 : EXPOSE 80
+ ---> Running in a2ab49b19f55
+ ---> a6ca1850e6f5
+Removing intermediate container a2ab49b19f55
+Successfully built a6ca1850e6f5
